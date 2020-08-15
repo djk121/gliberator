@@ -1,0 +1,25 @@
+[package]
+name = "gliberator"
+version = "0.1.0"
+authors = ["dan kelley <djk121@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+
+ssl = ["awc/ssl"]
+
+[dependencies]
+actix-web = { version = "2.0", features=["openssl"] }
+actix-rt = "1.0"
+awc = "0.2.4"
+indoc = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+futures = "0.3"
+async-std = "1.6.2"
+serde_json = "*"
+regex = "*"
+anyhow = "1.0.32"
+zip = "0.5.6"
+clap="*"
