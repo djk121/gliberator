@@ -1,3 +1,8 @@
+// Utility for downloading raw FIT files from a Garmin Connect account.
+//
+// Heavily indebted to tapiriik; implementation below closely follows
+// https://github.com/cpfair/tapiriik/blob/master/tapiriik/services/GarminConnect/garminconnect.py
+
 use actix_web::{client, cookie, http};
 
 use serde::{Deserialize, Serialize};
