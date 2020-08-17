@@ -98,22 +98,6 @@ impl MyCookieJar {
     }
 }
 
-/*
-pub trait ClientRequestExt {
-    fn add_cookies(self, cookies: &MyCookieJar) -> Self;
-}
-
-impl ClientRequestExt for client::ClientRequest {
-    fn add_cookies(mut self, cookies: &MyCookieJar) -> Self {
-        for cookie in cookies.get_cookies().unwrap() {
-            self.cookie(cookie);
-        }
-
-        self
-    }
-}
-*/
-
 #[derive(Serialize, Deserialize)]
 struct ActivityDownloadIndex(HashMap<u64, String>); // activityId, path_to_activity_file
 
@@ -562,6 +546,7 @@ impl GarminConnect {
             zipped_fit.read_exact(&mut zip_buf)?;
 
             file.write_all(&zip_buf)?;
+            file.sync_all()?;
             self.activity_downloads
                 .update((activity, download_path.to_str().unwrap().to_string()))?;
 
